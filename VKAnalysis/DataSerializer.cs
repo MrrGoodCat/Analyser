@@ -100,6 +100,7 @@ namespace VKAnalysis
             {
                 XmlSerializer deserializer = new XmlSerializer(typeof(T));
                 using (TextReader reader = new StreamReader(xmlFilePath))
+
                 {
                     obj = deserializer.Deserialize(reader);
                     return (T)obj;
