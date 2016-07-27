@@ -11,6 +11,10 @@ namespace VKAnalysis
         string name;
         string author;
 
+        public Book()
+        {
+
+        }
         public Book(string name, string author)
         {
             this.name = name;

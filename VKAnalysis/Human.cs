@@ -15,6 +15,10 @@ namespace VKAnalysis
         int age;
         List<Book> readedBooks;
 
+        public Human()
+        {
+
+        }
         public Human(string name, string surname, string sex, int age)
         {
             this.name = name;
@@ -23,7 +27,7 @@ namespace VKAnalysis
             this.age = age;
 
             this.fullName = name + " " + surname;
-            readedBooks = new List<Book>();
+            ReadedBooks = new List<Book>();
         }
 
         public string Name
@@ -83,6 +87,19 @@ namespace VKAnalysis
             get
             {
                 return fullName;
+            }
+        }
+
+        public List<Book> ReadedBooks
+        {
+            get
+            {
+                return readedBooks;
+            }
+
+            set
+            {
+                readedBooks = value;
             }
         }
     }

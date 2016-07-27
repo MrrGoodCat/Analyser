@@ -26,13 +26,24 @@ namespace VKAnalysis
             model = new Model();
             InitializeComponent();
             UsersListView.ItemsSource = model.users;
-
+            BooksListView.ItemsSource = model.Books;
+            model.GenerateData();
+            BooksListView.Items.Refresh();
+            UsersListView.Items.Refresh();
         }
 
         private void GetFiendsButton_Click(object sender, RoutedEventArgs e)
         {
-            model.GenerateUsers(1000);
-            UsersListView.Items.Refresh();
+            model.SerializeData();
+            //model.GenerateUsers(1000);
+            //model.DistributeBooks();
+            //UsersListView.Items.Refresh();
+        }
+
+        private void GetBooksButton_Click(object sender, RoutedEventArgs e)
+        {
+            //model.GenerateBooks();
+            //BooksListView.Items.Refresh();
         }
     }
 }

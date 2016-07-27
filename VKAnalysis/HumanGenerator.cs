@@ -13,11 +13,17 @@ namespace VKAnalysis
         List<string> femaleNames;
         List<string> surnames;
         List<Human> humans;
+        //List<Book> books;
+        public List<string> booksNames;
+        public List<string> authors;
+
         Random random;
         string sex = null;
         string maleNamesFilePath = @"C:\Users\oleksandrv\Documents\Visual Studio 2015\Projects\VKAnalysis\VKAnalysis\Database\MaleNames.txt";
         string femaleNamesFilePath = @"C:\Users\oleksandrv\Documents\Visual Studio 2015\Projects\VKAnalysis\VKAnalysis\Database\FemaleNames.txt";
         string surnamesFilePath = @"C:\Users\oleksandrv\Documents\Visual Studio 2015\Projects\VKAnalysis\VKAnalysis\Database\Surnames.txt";
+        string authorsFilePat = @"C:\Users\oleksandrv\Documents\Visual Studio 2015\Projects\VKAnalysis\VKAnalysis\Database\Authors.txt";
+        string booksNamesFilePath = @"C:\Users\oleksandrv\Documents\Visual Studio 2015\Projects\VKAnalysis\VKAnalysis\Database\BooksNames.txt";
 
         public HumanGenerator()
         {
@@ -26,23 +32,17 @@ namespace VKAnalysis
             surnames = new List<string>();
             maleNames = new List<string>();
             femaleNames = new List<string>();
-            getNames(maleNamesFilePath, maleNames);
-            getNames(femaleNamesFilePath, femaleNames);
-            getSurnames(surnamesFilePath, surnames);
+            booksNames = new List<string>();
+            authors = new List<string>();
+            //books = new List<Book>();
+            fillTheList(maleNamesFilePath, maleNames);
+            fillTheList(femaleNamesFilePath, femaleNames);
+            fillTheList(surnamesFilePath, surnames);
+            fillTheList(authorsFilePat, authors);
+            fillTheList(booksNamesFilePath, booksNames);
         }
 
-        void getNames(string filePath, List<string> names)
-        {
-            //int counter = 0;
-            string line = null;
-            StreamReader srteamReader = new StreamReader(filePath);
-            while ((line = srteamReader.ReadLine()) != null)
-            {
-                names.Add(line);
-            }
-        }
-
-        void getSurnames(string filePath, List<string> names)
+        void fillTheList(string filePath, List<string> names)
         {
             string line = null;
             StreamReader srteamReader = new StreamReader(filePath);
@@ -81,7 +81,5 @@ namespace VKAnalysis
             Human somebody = new Human(getRandomName(), getRandomSurname(), sex, random.Next(10, 71));
             return somebody;
         }
-
-
     }
 }
