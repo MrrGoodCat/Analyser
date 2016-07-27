@@ -14,6 +14,7 @@ namespace VKAnalysis
         public Book()
         {
 
+
         }
         public Book(string name, string author)
         {
