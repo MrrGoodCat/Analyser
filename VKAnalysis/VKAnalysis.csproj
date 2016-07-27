@@ -59,11 +59,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Analyser.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Book.cs" />
+    <Compile Include="Database\DatabaseEngine.cs" />
     <Compile Include="DataSerializer.cs" />
     <Compile Include="Human.cs" />
     <Compile Include="HumanGenerator.cs" />

@@ -19,11 +19,11 @@ namespace VKAnalysis
 
         Random random;
         string sex = null;
-        string maleNamesFilePath = @"C:\Users\oleksandrv\Documents\Visual Studio 2015\Projects\VKAnalysis\VKAnalysis\Database\MaleNames.txt";
-        string femaleNamesFilePath = @"C:\Users\oleksandrv\Documents\Visual Studio 2015\Projects\VKAnalysis\VKAnalysis\Database\FemaleNames.txt";
-        string surnamesFilePath = @"C:\Users\oleksandrv\Documents\Visual Studio 2015\Projects\VKAnalysis\VKAnalysis\Database\Surnames.txt";
-        string authorsFilePat = @"C:\Users\oleksandrv\Documents\Visual Studio 2015\Projects\VKAnalysis\VKAnalysis\Database\Authors.txt";
-        string booksNamesFilePath = @"C:\Users\oleksandrv\Documents\Visual Studio 2015\Projects\VKAnalysis\VKAnalysis\Database\BooksNames.txt";
+        string maleNamesFilePath = @"C:\Users\Mrcat\Source\Repos\Analyser\VKAnalysis\Database\MaleNames.txt";
+        string femaleNamesFilePath = @"C:\Users\Mrcat\Source\Repos\Analyser\VKAnalysis\Database\FemaleNames.txt";
+        string surnamesFilePath = @"C:\Users\Mrcat\Source\Repos\Analyser\VKAnalysis\Database\Surnames.txt";
+        string authorsFilePat = @"C:\Users\Mrcat\Source\Repos\Analyser\VKAnalysis\Database\Authors.txt";
+        string booksNamesFilePath = @"C:\Users\Mrcat\Source\Repos\Analyser\VKAnalysis\Database\BooksNames.txt";
 
         public HumanGenerator()
         {

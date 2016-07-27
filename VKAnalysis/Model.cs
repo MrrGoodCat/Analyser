@@ -13,7 +13,7 @@ namespace VKAnalysis
         public List<Book> Books;
         HumanGenerator humanGenerator;
         Random random;
-        string XMLDataPath = @"C:\Users\oleksandrv\Documents\visual studio 2015\Projects\VKAnalysis\VKAnalysis\bin\data.xml";
+        string XMLDataPath = @"C:\XMLData\data.xml";
         public Model()
         {          
             random = new Random(DateTime.Now.Millisecond);
@@ -72,6 +72,23 @@ namespace VKAnalysis
         public void SerializeData()
         {
              serializer.Serialize(users, XMLDataPath);         
+        }
+
+        public void DeSerializeData()
+        {
+            users.AddRange(serializer.Deserialize(XMLDataPath));
+        }
+
+        string MoustPopularBook()
+        {
+            string bookName = null;
+
+            
+            foreach (var user in users)
+            {
+
+            }
+            return bookName;
         }
 
     }
