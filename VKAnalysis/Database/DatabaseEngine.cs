@@ -16,6 +16,7 @@ namespace VKAnalysis.Database
         {
             users = new List<Human>();
             serializer = new DataSerializer<List<Human>>();
+
         }
     }
 }
