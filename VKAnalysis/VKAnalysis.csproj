@@ -65,6 +65,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Book.cs" />
+    <Compile Include="Database\DataBase.cs" />
     <Compile Include="Database\DatabaseEngine.cs" />
     <Compile Include="DataSerializer.cs" />
     <Compile Include="Human.cs" />
@@ -103,15 +104,25 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Database\Surnames.txt" />
-    <Resource Include="Database\FemaleNames.txt" />
-    <Resource Include="Database\MaleNames.txt" />
+    <None Include="Database\Surnames.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Database\FemaleNames.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Database\MaleNames.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Database\BooksNames.txt" />
+    <None Include="Database\BooksNames.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Database\Authors.txt" />
+    <None Include="Database\Authors.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

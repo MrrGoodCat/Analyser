@@ -34,8 +34,8 @@ namespace VKAnalysis
 
         private void GetFiendsButton_Click(object sender, RoutedEventArgs e)
         {
-            model.SerializeData();
-            //model.GenerateUsers(1000);
+            ////model.SerializeData();
+            //model.GenerateUsers(10000);
             //model.DistributeBooks();
             //UsersListView.Items.Refresh();
         }
@@ -47,6 +47,11 @@ namespace VKAnalysis
             UsersListView.Items.Refresh();
             //model.GenerateBooks();
             //BooksListView.Items.Refresh();
+        }
+
+        private void ButtonGenerateXML_Click(object sender, RoutedEventArgs e)
+        {
+            model.SerializeData();
         }
     }
 }

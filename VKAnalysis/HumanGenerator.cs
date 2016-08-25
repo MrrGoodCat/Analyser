@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using VKAnalysis.Database;
 
 namespace VKAnalysis
 {
@@ -13,17 +14,16 @@ namespace VKAnalysis
         List<string> femaleNames;
         List<string> surnames;
         List<Human> humans;
-        //List<Book> books;
         public List<string> booksNames;
         public List<string> authors;
 
         Random random;
         string sex = null;
-        string maleNamesFilePath = @"C:\Users\Mrcat\Source\Repos\Analyser\VKAnalysis\Database\MaleNames.txt";
-        string femaleNamesFilePath = @"C:\Users\Mrcat\Source\Repos\Analyser\VKAnalysis\Database\FemaleNames.txt";
-        string surnamesFilePath = @"C:\Users\Mrcat\Source\Repos\Analyser\VKAnalysis\Database\Surnames.txt";
-        string authorsFilePat = @"C:\Users\Mrcat\Source\Repos\Analyser\VKAnalysis\Database\Authors.txt";
-        string booksNamesFilePath = @"C:\Users\Mrcat\Source\Repos\Analyser\VKAnalysis\Database\BooksNames.txt";
+        string maleNamesFilePath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location), "Database\\MaleNames.txt");
+        string femaleNamesFilePath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location), "Database\\FemaleNames.txt");
+        string surnamesFilePath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location), "Database\\Surnames.txt");
+        string authorsFilePat = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location), "Database\\Authors.txt");
+        string booksNamesFilePath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location), "Database\\BooksNames.txt");
 
         public HumanGenerator()
         {
@@ -34,7 +34,6 @@ namespace VKAnalysis
             femaleNames = new List<string>();
             booksNames = new List<string>();
             authors = new List<string>();
-            //books = new List<Book>();
             fillTheList(maleNamesFilePath, maleNames);
             fillTheList(femaleNamesFilePath, femaleNames);
             fillTheList(surnamesFilePath, surnames);
