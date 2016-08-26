@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace VKAnalysis
 {
@@ -13,7 +14,7 @@ namespace VKAnalysis
         public List<Book> Books;
         HumanGenerator humanGenerator;
         Random random;
-        string XMLDataPath = @"C:\XMLData\data.xml";
+        string XMLDataPath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location), "Database\\data.xml");
         public Model()
         {          
             random = new Random(DateTime.Now.Millisecond);
@@ -91,5 +92,17 @@ namespace VKAnalysis
             return bookName;
         }
 
+        public string GetMoustPopularBook()
+        {
+            string moustPopularBook = null;
+
+            var book = from b in (from user in users
+                       from readBook in user.ReadedBooks
+                       select readBook).GroupBy(b => b.Name)
+                       where b;
+                       
+
+            return moustPopularBook;
+        } 
     }
 }

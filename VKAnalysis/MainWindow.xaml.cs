@@ -51,7 +51,8 @@ namespace VKAnalysis
 
         private void ButtonGenerateXML_Click(object sender, RoutedEventArgs e)
         {
-            model.SerializeData();
+            model.GetMoustPopularBook();
+            //model.SerializeData();
         }
     }
 }
