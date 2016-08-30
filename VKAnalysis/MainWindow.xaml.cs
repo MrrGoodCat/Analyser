@@ -27,7 +27,7 @@ namespace VKAnalysis
             InitializeComponent();
             UsersListView.ItemsSource = model.users;
             BooksListView.ItemsSource = model.Books;
-            //model.GenerateData();
+            model.GenerateBooks();
             BooksListView.Items.Refresh();
             UsersListView.Items.Refresh();
         }
@@ -51,7 +51,7 @@ namespace VKAnalysis
 
         private void ButtonGenerateXML_Click(object sender, RoutedEventArgs e)
         {
-            model.GetMoustPopularBook();
+            MessageBox.Show(model.GetMoustPopularBook());
             //model.SerializeData();
         }
     }

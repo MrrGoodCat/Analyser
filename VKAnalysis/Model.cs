@@ -96,11 +96,32 @@ namespace VKAnalysis
         {
             string moustPopularBook = null;
 
-            var book = from b in (from user in users
-                       from readBook in user.ReadedBooks
-                       select readBook).GroupBy(b => b.Name)
-                       where b;
-                       
+            //var book = users.SelectMany(a=>a.ReadedBooks.GroupBy(x => x.Name).OrderByDescending(x => x.Count()));
+
+            //moustPopularBook = $"{book.First().First().Author} - {book.First().First().Name}, Count: {book.First().Key.Count()}";
+            //var popularBook = (from user in users
+            //                   from readedBooks in user.ReadedBooks
+            //                   group readedBooks by readedBooks.Name).OrderByDescending(x => x.Count()).Select(x => x.Last());
+
+
+            //moustPopularBook = popularBook.First().Author + " - " + popularBook.First().Name + ", Count: " + popularBook.Count();
+            int count = 0;
+            int result = 0;
+            foreach (var b in Books)
+            {
+                foreach (var user in users)
+                {
+                    if (user.ReadedBooks.Contains(b))
+                    {
+                        count++;
+                    }
+                }
+                if (count > result)
+                {
+                    result = count;
+                    moustPopularBook = $"{b.Author} - {b.Name}, Count: {result}";
+                }
+            }
 
             return moustPopularBook;
         } 
