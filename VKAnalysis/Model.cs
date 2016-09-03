@@ -96,13 +96,39 @@ namespace VKAnalysis
         {
             string moustPopularBook = null;
 
-            var book = from b in (from user in users
-                       from readBook in user.ReadedBooks
-                       select readBook).GroupBy(b => b.Name)
-                       where b;
-                       
+            var book = users.SelectMany(x => x.ReadedBooks).GroupBy(x => x.Name).OrderByDescending(x => x.Count()).First();
+
+            moustPopularBook = $"{book.First().Author} - {book.First().Name}";
 
             return moustPopularBook;
         } 
+
+        public string GetMoustPopularBookVerifycation()
+        {
+            string moustPopularBook = null;
+
+            var ListOfBooks = users.SelectMany(x => x.ReadedBooks);
+            
+            int result = 0;
+            foreach (var book in Books)
+            {
+                int count = 0;
+                foreach (var readedBook in ListOfBooks)
+                {
+                    if (book.Name == readedBook.Name)
+                    {
+                        count++;
+                        
+                    }
+                }
+                if (count > result)
+                {
+                    result = count;
+                    moustPopularBook = $"{book.Name} - {book.Author}, Count: {result}";
+                }
+            }
+
+            return moustPopularBook;
+        }
     }
 }
