@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace VKAnalysis.Database
 {
@@ -10,7 +11,7 @@ namespace VKAnalysis.Database
     {
         DataSerializer<List<Human>> serializer;
         public List<Human> users;
-        string XMLDataPath = @"C:\XMLData\data.xml";
+        string XMLDataPath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location), "Database\\data.xml");
 
         public DatabaseEngine()
         {

@@ -77,7 +77,15 @@ namespace VKAnalysis
 
         public void DeSerializeData()
         {
-            users.AddRange(serializer.Deserialize(XMLDataPath));
+            if (File.Exists(XMLDataPath))
+            {
+                users.AddRange(serializer.Deserialize(XMLDataPath));
+            }
+            else
+            {
+                GenerateData();
+                SerializeData();
+            }
         }
 
         string MoustPopularBook()
@@ -129,6 +137,45 @@ namespace VKAnalysis
             }
 
             return moustPopularBook;
+        }
+
+        public string GetMalePopularBok()
+        {
+            string malePopularBook = null;
+
+            var usersOfAge = from user in users
+                              where (user.Age >= 25 && user.Age <= 65 && user.Sex == "Male")
+                              select user;
+
+            var popularBook = usersOfAge.SelectMany(x => x.ReadedBooks).GroupBy(x => x.Name).OrderByDescending(x => x.Count()).First();
+
+            malePopularBook = $"{popularBook.First().Author} - {popularBook.First().Name}";
+
+            return malePopularBook;
+        }
+
+        public string GetFemalePopularBok()
+        {
+            string femalePopularBook = null;
+
+            var usersOfAge = from user in users
+                             where (user.Age >= 25 && user.Age <=45 && user.Sex == "Female")
+                             select user;
+
+            var popularBook = usersOfAge.SelectMany(x => x.ReadedBooks).GroupBy(x => x.Name).OrderByDescending(x => x.Count()).First();
+
+            femalePopularBook = $"{popularBook.First().Author} - {popularBook.First().Name}";
+
+            return femalePopularBook;
+        }
+
+        public int GetAverageBookCountForMale()
+        {
+            int averageCount = 0;
+
+            var count = 
+
+            return averageCount;
         }
     }
 }
