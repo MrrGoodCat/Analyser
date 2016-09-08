@@ -27,9 +27,14 @@ namespace VKAnalysis
             InitializeComponent();
             
             model.DeSerializeData();
-            labelAverageAmountOfBook.Content = Math.Round(model.GetAverageAmountOfBooks("Female"), 2);
+            labelMinABM.Content = Math.Round(model.GetMinAmountOfBooks(25, 50, "Male"), 2);
+            labelAABM.Content = Math.Round(model.GetAverageAmountOfBooks("Male"), 2);
+            labelMABM.Content = Math.Round(model.GetMaxAmountOfBooks(25, 50, "Male"), 2);
 
-           // model.GenerateBooks();
+            labelMinABF.Content = Math.Round(model.GetMinAmountOfBooks(25, 50, "Female"), 2);
+            labelAABF.Content = Math.Round(model.GetAverageAmountOfBooks("Female"), 2);
+            labelMABF.Content = Math.Round(model.GetMaxAmountOfBooks(25, 50, "Female"), 2);
+            // model.GenerateBooks();
         }
 
         private void GetFiendsButton_Click(object sender, RoutedEventArgs e)

@@ -5,19 +5,66 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VKAnalysis"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="531.825" MinWidth="550" MinHeight="350">
+        Title="MainWindow" Height="500" Width="828" MinWidth="828" MinHeight="500">
     <Grid>
-        <Button x:Name="GetFiendsButton" Content="Get Friends" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="75" Click="GetFiendsButton_Click"/>
-        <Button x:Name="GetBooksButton" Content="Get Books" HorizontalAlignment="Right" Margin="0,37,10,0" VerticalAlignment="Top" Width="75" Click="GetBooksButton_Click"/>
-        <Button x:Name="ButtonGenerateXML" Content="Generate XML" HorizontalAlignment="Right" Margin="0,64,10,0" VerticalAlignment="Top" Width="75" Click="ButtonGenerateXML_Click"/>
-        <Button x:Name="buttonCounts" Content="Counts" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="75" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="buttonCounts_Click"/>
-        <Label x:Name="label" Content="Average amount of books that males have" HorizontalAlignment="Left" Margin="170,209,0,0" VerticalAlignment="Top" Width="258"/>
-        <Label x:Name="label1" Content="Average amount of books that females have" HorizontalAlignment="Left" Margin="272.191,150,0,0" VerticalAlignment="Top" Width="100" Height="59" ScrollViewer.VerticalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center" UseLayoutRounding="False" IsHitTestVisible="True"/>
-        <Viewbox HorizontalAlignment="Left" Height="100" Margin="22,33,0,0" VerticalAlignment="Top" Width="125">
-            <Label x:Name="labelAverageAmountOfBook" Content="" Height="38" VerticalContentAlignment="Center" Width="48" FontSize="16" HorizontalContentAlignment="Center" Padding="0,5" FontWeight="Bold" FontFamily="Calibri"/>
-        </Viewbox>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="33,152,0,0" TextWrapping="Wrap" Text="Average amount of books that females have" VerticalAlignment="Top" Height="53" Width="106"/>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="150" Margin="10,10,0,0" VerticalAlignment="Top" Width="150" Source="C:\Users\oleksandrv\Source\Repos\Analyser\VKAnalysis\Database\Diagram.png"/>
+        <Grid.Background>
+            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}"/>
+        </Grid.Background>
+        
+        <Grid Height="220" Margin="0,10,0,0" VerticalAlignment="Top" Width="800">
+
+            <Grid HorizontalAlignment="Left" Height="220" Margin="0" VerticalAlignment="Top" Width="600">
+
+                <Label x:Name="label" Content="Amount of books that males have" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="600" Padding="0" Height="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Meiryo" FontSize="24" FontWeight="Bold"/>
+
+                <Grid x:Name="widgetSecond" HorizontalAlignment="Center" Height="170" Margin="0,10,0,0" VerticalAlignment="Bottom" Width="150">
+                    <Image x:Name="imageDiagram1" HorizontalAlignment="Center" Height="150" Margin="0,0,0,0" VerticalAlignment="Top" Width="150" Source="Database/Diagram.png"/>
+                    <TextBlock x:Name="textBlockAABM" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Average" TextAlignment="Center" VerticalAlignment="Bottom" Height="20" Width="150" FontSize="12" FontFamily="Meiryo" FontWeight="Bold"/>
+                    <Label x:Name="labelAABM" Content="" HorizontalAlignment="Center" Margin="0,39,0,0" VerticalAlignment="Top" Width="110" Height="70" FontFamily="Impact" FontSize="46" FontWeight="Bold" Padding="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                </Grid>
+
+                <Grid x:Name="widgetThird" HorizontalAlignment="Left" Height="170" Margin="10,10,0,0" VerticalAlignment="Bottom" Width="150">
+                    <Image x:Name="imageDiagram2" HorizontalAlignment="Center" Height="150" Margin="0,0,0,0" VerticalAlignment="Top" Width="150" Source="Database/Diagram.png"/>
+                    <TextBlock x:Name="textBlockMABM" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Maximum" TextAlignment="Center" VerticalAlignment="Bottom" Height="20" Width="150" FontSize="12" FontFamily="Meiryo" FontWeight="Bold"/>
+                    <Ellipse Fill="#FFCF3722" HorizontalAlignment="Center" Height="100" Margin="0,25,0,0" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="100"/>
+                    <Label x:Name="labelMABM" Content="" HorizontalAlignment="Center" Margin="0,39,0,0" VerticalAlignment="Top" Width="110" Height="70" FontFamily="Impact" FontSize="46" FontWeight="Bold" Padding="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                </Grid>
+
+                <Grid x:Name="widgetForth" HorizontalAlignment="Right" Height="170" Margin="0,10,10,0" VerticalAlignment="Bottom" Width="150">
+                    <Image x:Name="imageDiagram3" HorizontalAlignment="Center" Height="150" Margin="0,0,0,0" VerticalAlignment="Top" Width="150" Source="Database\Diagram.png"/>
+                    <TextBlock x:Name="textBlockMinABM" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Minimum" TextAlignment="Center" VerticalAlignment="Bottom" Height="20" Width="150" FontSize="12" FontFamily="Meiryo" FontWeight="Bold"/>
+                    <Ellipse Fill="#FFF5BE40" HorizontalAlignment="Center" Height="100" Margin="0,25,0,0" Stroke="Black" VerticalAlignment="Top" Width="100" StrokeThickness="0"/>
+                    <Label x:Name="labelMinABM" Content="" HorizontalAlignment="Center" Margin="0,39,0,0" VerticalAlignment="Top" Width="110" Height="70" FontFamily="Impact" FontSize="46" FontWeight="Bold" Padding="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid Height="220" Margin="10,235,10,0" VerticalAlignment="Top" Width="800">
+
+            <Grid HorizontalAlignment="Left" Height="220" Margin="0" VerticalAlignment="Top" Width="600">
+
+                <Label x:Name="label1" Content="Amount of books that females have" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="600" Padding="0" Height="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Meiryo" FontSize="24" FontWeight="Bold"/>
+
+                <Grid x:Name="widgetSecond1" HorizontalAlignment="Center" Height="170" Margin="0,10,0,0" VerticalAlignment="Bottom" Width="150">
+                    <Image x:Name="imageDiagram4" HorizontalAlignment="Center" Height="150" Margin="0,0,0,0" VerticalAlignment="Top" Width="150" Source="Database/Diagram.png"/>
+                    <TextBlock x:Name="textBlockAABM1" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Average" TextAlignment="Center" VerticalAlignment="Bottom" Height="20" Width="150" FontSize="12" FontFamily="Meiryo" FontWeight="Bold"/>
+                    <Label x:Name="labelAABF" Content="" HorizontalAlignment="Center" Margin="0,39,0,0" VerticalAlignment="Top" Width="110" Height="70" FontFamily="Impact" FontSize="46" FontWeight="Bold" Padding="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                </Grid>
+
+                <Grid x:Name="widgetThird1" HorizontalAlignment="Left" Height="170" Margin="10,10,0,0" VerticalAlignment="Bottom" Width="150">
+                    <Image x:Name="imageDiagram5" HorizontalAlignment="Center" Height="150" Margin="0,0,0,0" VerticalAlignment="Top" Width="150" Source="Database/Diagram.png"/>
+                    <TextBlock x:Name="textBlockMABF" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Maximum" TextAlignment="Center" VerticalAlignment="Bottom" Height="20" Width="150" FontSize="12" FontFamily="Meiryo" FontWeight="Bold"/>
+                    <Ellipse Fill="#FFCF3722" HorizontalAlignment="Center" Height="100" Margin="0,25,0,0" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="100"/>
+                    <Label x:Name="labelMABF" Content="" HorizontalAlignment="Center" Margin="0,39,0,0" VerticalAlignment="Top" Width="110" Height="70" FontFamily="Impact" FontSize="46" FontWeight="Bold" Padding="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                </Grid>
+
+                <Grid x:Name="widgetForth1" HorizontalAlignment="Right" Height="170" Margin="0,10,10,0" VerticalAlignment="Bottom" Width="150">
+                    <Image x:Name="imageDiagram6" HorizontalAlignment="Center" Height="150" Margin="0,0,0,0" VerticalAlignment="Top" Width="150" Source="Database/Diagram.png"/>
+                    <TextBlock x:Name="textBlockMinABM1" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Minimum" TextAlignment="Center" VerticalAlignment="Bottom" Height="20" Width="150" FontSize="12" FontFamily="Meiryo" FontWeight="Bold"/>
+                    <Ellipse Fill="#FFF5BE40" HorizontalAlignment="Center" Height="100" Margin="0,25,0,0" Stroke="Black" VerticalAlignment="Top" Width="100" StrokeThickness="0"/>
+                    <Label x:Name="labelMinABF" Content="" HorizontalAlignment="Center" Margin="0,39,0,0" VerticalAlignment="Top" Width="110" Height="70" FontFamily="Impact" FontSize="46" FontWeight="Bold" Padding="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                </Grid>
+            </Grid>
+        </Grid>
 
     </Grid>
 </Window>
