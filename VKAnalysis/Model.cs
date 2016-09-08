@@ -24,7 +24,7 @@ namespace VKAnalysis
             serializer = new DataSerializer<List<Human>>();
         }
 
-        public void GenerateBooks()
+        void GenerateBooks()
         {
             for (int i = 0; i < humanGenerator.booksNames.Count; i++)
             {
@@ -32,7 +32,7 @@ namespace VKAnalysis
             }
         }
 
-        public void GenerateUsers(int countOfUsers)
+        void GenerateUsers(int countOfUsers)
         {
             for (int i = 0; i < countOfUsers; i++)
             {
@@ -40,7 +40,7 @@ namespace VKAnalysis
             }
         }
 
-        public void DistributeBooks()
+        void DistributeBooks()
         {
             foreach (var user in users)
             {
@@ -63,7 +63,7 @@ namespace VKAnalysis
             return randomBooks;
         }
 
-        public void GenerateData()
+        void GenerateData()
         {
             GenerateBooks();
             GenerateUsers(10000);
@@ -88,18 +88,6 @@ namespace VKAnalysis
             }
         }
 
-        string MoustPopularBook()
-        {
-            string bookName = null;
-
-            
-            foreach (var user in users)
-            {
-
-            }
-            return bookName;
-        }
-
         public string GetMoustPopularBook()
         {
             string moustPopularBook = null;
@@ -109,73 +97,73 @@ namespace VKAnalysis
             moustPopularBook = $"{book.First().Author} - {book.First().Name}";
 
             return moustPopularBook;
-        } 
-
-        public string GetMoustPopularBookVerifycation()
-        {
-            string moustPopularBook = null;
-
-            var ListOfBooks = users.SelectMany(x => x.ReadedBooks);
-            
-            int result = 0;
-            foreach (var book in Books)
-            {
-                int count = 0;
-                foreach (var readedBook in ListOfBooks)
-                {
-                    if (book.Name == readedBook.Name)
-                    {
-                        count++;
-                        
-                    }
-                }
-                if (count > result)
-                {
-                    result = count;
-                    moustPopularBook = $"{book.Name} - {book.Author}, Count: {result}";
-                }
-            }
-
-            return moustPopularBook;
         }
 
-        public string GetMalePopularBok()
+        public string GetLeastPopularBook()
         {
-            string malePopularBook = null;
+            string leastPopularBook = null;
 
-            var usersOfAge = from user in users
-                              where (user.Age >= 25 && user.Age <= 65 && user.Sex == "Male")
-                              select user;
+            var book = users.SelectMany(x => x.ReadedBooks).GroupBy(x => x.Name).OrderByDescending(x => x.Count()).Last();
 
-            var popularBook = usersOfAge.SelectMany(x => x.ReadedBooks).GroupBy(x => x.Name).OrderByDescending(x => x.Count()).First();
+            leastPopularBook = $"{book.First().Author} - {book.First().Name}";
 
-            malePopularBook = $"{popularBook.First().Author} - {popularBook.First().Name}";
-
-            return malePopularBook;
+            return leastPopularBook;
         }
 
-        public string GetFemalePopularBok()
+        public double GetAverageAmountOfBooks(string sex)
         {
-            string femalePopularBook = null;
+            double averageCount = 0;
 
-            var usersOfAge = from user in users
-                             where (user.Age >= 25 && user.Age <=45 && user.Sex == "Female")
-                             select user;
+            var males = from user in users
+                        where user.Sex == sex
+                        select user;
 
-            var popularBook = usersOfAge.SelectMany(x => x.ReadedBooks).GroupBy(x => x.Name).OrderByDescending(x => x.Count()).First();
-
-            femalePopularBook = $"{popularBook.First().Author} - {popularBook.First().Name}";
-
-            return femalePopularBook;
-        }
-
-        public int GetAverageBookCountForMale()
-        {
-            int averageCount = 0;
-
-            var count = 
+            var count = males.Select(x => x.ReadedBooks.Count()).Average();
+            averageCount = count;
 
             return averageCount;
+        }
+
+        public double GetAverageAmountOfBooks(int minAge, int maxAge, string sex)
+        {
+            double averageCount = 0;
+
+            var females = from user in users
+                        where (user.Age >= minAge && user.Age <= maxAge && user.Sex == sex)
+                          select user;
+
+            var count = females.Select(x => x.ReadedBooks.Count()).Average();
+            averageCount = count;
+
+            return averageCount;
+        }
+
+        public double GetMinAmountOfBooks(int minAge, int maxAge, string sex)
+        {
+            double minCount = 0;
+
+            var females = from user in users
+                          where (user.Age >= minAge && user.Age <= maxAge && user.Sex == sex)
+                          select user;
+
+            var count = females.Select(x => x.ReadedBooks.Count()).Min();
+            minCount = count;
+
+            return minCount;
+        }
+
+        public double GetMaxAmountOfBooks(int minAge, int maxAge, string sex)
+        {
+            double maxCount = 0;
+
+            var females = from user in users
+                          where (user.Age >= minAge && user.Age <= maxAge && user.Sex == sex)
+                          select user;
+
+            var count = females.Select(x => x.ReadedBooks.Count()).Max();
+            maxCount = count;
+
+            return maxCount;
         }
     }
 }

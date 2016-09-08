@@ -25,18 +25,16 @@ namespace VKAnalysis
         {
             model = new Model();
             InitializeComponent();
-            UsersListView.ItemsSource = model.users;
-            BooksListView.ItemsSource = model.Books;
             
             model.DeSerializeData();
-            model.GenerateBooks();
-            BooksListView.Items.Refresh();
-            UsersListView.Items.Refresh();
+            labelAverageAmountOfBook.Content = Math.Round(model.GetAverageAmountOfBooks("Female"), 2);
+
+           // model.GenerateBooks();
         }
 
         private void GetFiendsButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(model.GetMalePopularBok());
+            MessageBox.Show(model.GetMoustPopularBook());
             ////model.SerializeData();
             //model.GenerateUsers(10000);
             //model.DistributeBooks();
@@ -45,7 +43,7 @@ namespace VKAnalysis
 
         private void GetBooksButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(model.GetFemalePopularBok());
+            MessageBox.Show(model.GetLeastPopularBook());
             //BooksListView.Items.Refresh();
             //UsersListView.Items.Refresh();
             //model.GenerateBooks();
@@ -54,9 +52,13 @@ namespace VKAnalysis
 
         private void ButtonGenerateXML_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(model.GetMoustPopularBookVerifycation() + "\n" + model.GetMoustPopularBook());
-            
-            //model.SerializeData();
+            MessageBox.Show(model.GetMinAmountOfBooks(25, 50, "Male").ToString());
+
+        }
+
+        private void buttonCounts_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(model.GetMaxAmountOfBooks(25, 50, "Male").ToString());
         }
     }
 }
