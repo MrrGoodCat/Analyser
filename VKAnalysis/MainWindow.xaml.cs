@@ -27,7 +27,8 @@ namespace VKAnalysis
             InitializeComponent();
             
             model.DeSerializeData();
-            labelMinABM.Content = Math.Round(model.GetMinAmountOfBooks(25, 50, "Male"), 2);
+            labelMinABM.Content = Math.Round(model.GetMinAmountOfBooks(25, 50, comboBoxSex.Text), 2);
+
             labelAABM.Content = Math.Round(model.GetAverageAmountOfBooks("Male"), 2);
             labelMABM.Content = Math.Round(model.GetMaxAmountOfBooks(25, 50, "Male"), 2);
 
@@ -37,33 +38,15 @@ namespace VKAnalysis
             // model.GenerateBooks();
         }
 
-        private void GetFiendsButton_Click(object sender, RoutedEventArgs e)
+
+        private void setComboBox()
         {
-            MessageBox.Show(model.GetMoustPopularBook());
-            ////model.SerializeData();
-            //model.GenerateUsers(10000);
-            //model.DistributeBooks();
-            //UsersListView.Items.Refresh();
+            
         }
 
-        private void GetBooksButton_Click(object sender, RoutedEventArgs e)
+        private void comboBoxSex_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            MessageBox.Show(model.GetLeastPopularBook());
-            //BooksListView.Items.Refresh();
-            //UsersListView.Items.Refresh();
-            //model.GenerateBooks();
-            //BooksListView.Items.Refresh();
-        }
-
-        private void ButtonGenerateXML_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show(model.GetMinAmountOfBooks(25, 50, "Male").ToString());
-
-        }
-
-        private void buttonCounts_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show(model.GetMaxAmountOfBooks(25, 50, "Male").ToString());
+            labelMinABM.Content = Math.Round(model.GetMinAmountOfBooks(25, 50, comboBoxSex.Text), 2);
         }
     }
 }
