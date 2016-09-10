@@ -21,13 +21,14 @@ namespace VKAnalysis
     public partial class MainWindow : Window
     {
         Model model;
+        string sex = "Male";
         public MainWindow()
         {
             model = new Model();
             InitializeComponent();
             
             model.DeSerializeData();
-            labelMinABM.Content = Math.Round(model.GetMinAmountOfBooks(25, 50, comboBoxSex.Text), 2);
+            labelMinABM.Content = Math.Round(model.GetMinAmountOfBooks(25, 50, sex), 2);
 
             labelAABM.Content = Math.Round(model.GetAverageAmountOfBooks("Male"), 2);
             labelMABM.Content = Math.Round(model.GetMaxAmountOfBooks(25, 50, "Male"), 2);
@@ -41,12 +42,15 @@ namespace VKAnalysis
 
         private void setComboBox()
         {
-            
+
         }
 
         private void comboBoxSex_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            labelMinABM.Content = Math.Round(model.GetMinAmountOfBooks(25, 50, comboBoxSex.Text), 2);
+            sex = (comboBoxSex.SelectedItem as ComboBoxItem).Content.ToString();
+            labelMinABM.Content = Math.Round(model.GetMinAmountOfBooks(25, 50, sex), 2);
+            labelAABM.Content = Math.Round(model.GetAverageAmountOfBooks(sex), 2);
+            labelMABM.Content = Math.Round(model.GetMaxAmountOfBooks(25, 50, sex), 2);
         }
     }
 }
