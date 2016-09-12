@@ -165,5 +165,48 @@ namespace VKAnalysis
 
             return maxCount;
         }
+
+
+        public double GetAverageAmountOfBooks(int minAge, int maxAge)
+        {
+            double averageCount = 0;
+
+            var females = from user in users
+                          where (user.Age >= minAge && user.Age <= maxAge)
+                          select user;
+
+            var count = females.Select(x => x.ReadedBooks.Count()).Average();
+            averageCount = count;
+
+            return averageCount;
+        }
+
+        public double GetMinAmountOfBooks(int minAge, int maxAge)
+        {
+            double minCount = 0;
+
+            var females = from user in users
+                          where (user.Age >= minAge && user.Age <= maxAge)
+                          select user;
+
+            var count = females.Select(x => x.ReadedBooks.Count()).Min();
+            minCount = count;
+
+            return minCount;
+        }
+
+        public double GetMaxAmountOfBooks(int minAge, int maxAge)
+        {
+            double maxCount = 0;
+
+            var females = from user in users
+                          where (user.Age >= minAge && user.Age <= maxAge)
+                          select user;
+
+            var count = females.Select(x => x.ReadedBooks.Count()).Max();
+            maxCount = count;
+
+            return maxCount;
+        }
     }
 }

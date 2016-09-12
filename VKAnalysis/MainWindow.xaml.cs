@@ -21,22 +21,76 @@ namespace VKAnalysis
     public partial class MainWindow : Window
     {
         Model model;
-        string sex = "Male";
+        string sex = null;
+        int minAge = 0;
+        int maxAge = 0;
+
+        public int MinAge
+        {
+            get
+            {
+                return minAge;
+            }
+
+            set
+            {
+                if (value > maxAge)
+                {
+                    maxAge = value;
+                }
+                else
+                {
+                    if (value < 0)
+                    {
+                        minAge = 0;
+                    }
+                    else
+                    {
+                        minAge = value;
+                    }
+                }
+                
+            }
+        }
+
+        public int MaxAge
+        {
+            get
+            {
+                return maxAge;
+            }
+
+            set
+            {
+                if (value < minAge)
+                {
+                    maxAge = minAge;
+                }
+                else
+                {
+                    if (value < 0)
+                    {
+                        maxAge = minAge;
+                    }
+                    else
+                    {
+                        maxAge = value;
+                    }
+                }
+                
+            }
+        }
+
         public MainWindow()
         {
             model = new Model();
             InitializeComponent();
             
             model.DeSerializeData();
-            labelMinABM.Content = Math.Round(model.GetMinAmountOfBooks(25, 50, sex), 2);
-
+            labelMinABM.Content = Math.Round(model.GetMinAmountOfBooks(25, 50, "Male"), 2);
             labelAABM.Content = Math.Round(model.GetAverageAmountOfBooks("Male"), 2);
             labelMABM.Content = Math.Round(model.GetMaxAmountOfBooks(25, 50, "Male"), 2);
 
-            labelMinABF.Content = Math.Round(model.GetMinAmountOfBooks(25, 50, "Female"), 2);
-            labelAABF.Content = Math.Round(model.GetAverageAmountOfBooks("Female"), 2);
-            labelMABF.Content = Math.Round(model.GetMaxAmountOfBooks(25, 50, "Female"), 2);
-            // model.GenerateBooks();
         }
 
 
@@ -45,12 +99,30 @@ namespace VKAnalysis
 
         }
 
-        private void comboBoxSex_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void setAge(int minAge, int maxAge)
         {
-            sex = (comboBoxSex.SelectedItem as ComboBoxItem).Content.ToString();
-            labelMinABM.Content = Math.Round(model.GetMinAmountOfBooks(25, 50, sex), 2);
-            labelAABM.Content = Math.Round(model.GetAverageAmountOfBooks(sex), 2);
-            labelMABM.Content = Math.Round(model.GetMaxAmountOfBooks(25, 50, sex), 2);
+            labelMinABF.Content = Math.Round(model.GetMinAmountOfBooks(minAge, maxAge), 2);
+            labelAABF.Content = Math.Round(model.GetAverageAmountOfBooks(minAge, maxAge), 2);
+            labelMABF.Content = Math.Round(model.GetMaxAmountOfBooks(minAge, maxAge), 2);
+        }
+
+        private void setAgeAndSex(int minAge, int maxAge, string sex)
+        {
+            labelMinABF.Content = Math.Round(model.GetMinAmountOfBooks(minAge, maxAge, sex), 2);
+            labelAABF.Content = Math.Round(model.GetAverageAmountOfBooks(minAge, maxAge, sex), 2);
+            labelMABF.Content = Math.Round(model.GetMaxAmountOfBooks(minAge, maxAge, sex), 2);
+        }
+
+        private void radioButtonMale_Checked(object sender, RoutedEventArgs e)
+        {
+            sex = "Male";
+            setAgeAndSex(MinAge, MaxAge, sex);
+        }
+
+        private void radioButtonFemale_Checked(object sender, RoutedEventArgs e)
+        {
+            sex = "Fenale";
+            setAgeAndSex(MinAge, MaxAge, sex);
         }
     }
 }
