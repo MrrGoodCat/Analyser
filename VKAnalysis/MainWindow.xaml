@@ -41,13 +41,13 @@
             </Grid>
             <Grid HorizontalAlignment="Right" Height="220" Margin="0" VerticalAlignment="Top" Width="180">
                 <Label x:Name="label2" Content="Users age:" HorizontalAlignment="Left" Margin="0,40,0,0" VerticalAlignment="Top" Width="180" Height="40" VerticalContentAlignment="Center" FontFamily="Meiryo" FontSize="18" Foreground="White"/>
-                <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="0,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Text="From"/>
+                <TextBox x:Name="textBoxMinAge" HorizontalAlignment="Left" Height="23" Margin="0,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Text="From"/>
                 <Label x:Name="label3" Content="—" HorizontalAlignment="Left" Margin="55,85,0,0" VerticalAlignment="Top" Height="23" VerticalContentAlignment="Center" Padding="5,0,5,2"/>
-                <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="83,85,-31,0" TextWrapping="Wrap" Text="To" VerticalAlignment="Top" Width="50"/>
+                <TextBox x:Name="textBoxMaxAge" HorizontalAlignment="Left" Height="23" Margin="83,85,-31,0" TextWrapping="Wrap" Text="To" VerticalAlignment="Top" Width="50"/>
                 <Label x:Name="label2_Copy" Content="Users sex:" HorizontalAlignment="Left" Margin="0,113,0,0" VerticalAlignment="Top" Width="100" Height="40" VerticalContentAlignment="Center" FontFamily="Meiryo" FontSize="18" Foreground="White"/>
                 <RadioButton x:Name="radioButtonMale" Content="Male" HorizontalAlignment="Left" Margin="10,158,0,0" VerticalAlignment="Top" Foreground="White" Checked="radioButtonMale_Checked"/>
                 <RadioButton x:Name="radioButtonFemale" Content="Female" HorizontalAlignment="Left" Margin="10,179,0,0" VerticalAlignment="Top" Foreground="White" Checked="radioButtonFemale_Checked"/>
-                <RadioButton x:Name="radioButtonAny" Content="Any" HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top" Foreground="White"/>
+                <RadioButton x:Name="radioButtonAny" Content="Any" HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top" Foreground="White" Checked="radioButtonAny_Checked"/>
             </Grid>
         </Grid>
         <Grid Height="220" Margin="10,235,10,0" VerticalAlignment="Top" Width="800">

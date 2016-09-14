@@ -208,5 +208,17 @@ namespace VKAnalysis
 
             return maxCount;
         }
+
+        public int GetMinUserAge()
+        {
+            var userMinAge = users.Select(x => x.Age).Min();
+            return userMinAge;
+        }
+
+        public int GetMaxUserAge()
+        {
+            var userMaxAge = users.Select(x => x.Age).Max();
+            return userMaxAge;
+        }
     }
 }

@@ -85,11 +85,16 @@ namespace VKAnalysis
         {
             model = new Model();
             InitializeComponent();
-            
+
             model.DeSerializeData();
-            labelMinABM.Content = Math.Round(model.GetMinAmountOfBooks(25, 50, "Male"), 2);
-            labelAABM.Content = Math.Round(model.GetAverageAmountOfBooks("Male"), 2);
-            labelMABM.Content = Math.Round(model.GetMaxAmountOfBooks(25, 50, "Male"), 2);
+            MinAge = model.GetMinUserAge();
+            MaxAge = model.GetMaxUserAge();
+
+            textBoxMinAge.Text = model.GetMinUserAge().ToString();
+            textBoxMaxAge.Text = model.GetMaxUserAge().ToString();
+            //labelMinABM.Content = Math.Round(model.GetMinAmountOfBooks(25, 50, "Male"), 2);
+            //labelAABM.Content = Math.Round(model.GetAverageAmountOfBooks("Male"), 2);
+            //labelMABM.Content = Math.Round(model.GetMaxAmountOfBooks(25, 50, "Male"), 2);
 
         }
 
@@ -101,16 +106,16 @@ namespace VKAnalysis
 
         private void setAge(int minAge, int maxAge)
         {
-            labelMinABF.Content = Math.Round(model.GetMinAmountOfBooks(minAge, maxAge), 2);
-            labelAABF.Content = Math.Round(model.GetAverageAmountOfBooks(minAge, maxAge), 2);
-            labelMABF.Content = Math.Round(model.GetMaxAmountOfBooks(minAge, maxAge), 2);
+            labelMinABM.Content = Math.Round(model.GetMinAmountOfBooks(minAge, maxAge), 2);
+            labelAABM.Content = Math.Round(model.GetAverageAmountOfBooks(minAge, maxAge), 2);
+            labelMABM.Content = Math.Round(model.GetMaxAmountOfBooks(minAge, maxAge), 2);
         }
 
         private void setAgeAndSex(int minAge, int maxAge, string sex)
         {
-            labelMinABF.Content = Math.Round(model.GetMinAmountOfBooks(minAge, maxAge, sex), 2);
-            labelAABF.Content = Math.Round(model.GetAverageAmountOfBooks(minAge, maxAge, sex), 2);
-            labelMABF.Content = Math.Round(model.GetMaxAmountOfBooks(minAge, maxAge, sex), 2);
+            labelMinABM.Content = Math.Round(model.GetMinAmountOfBooks(minAge, maxAge, sex), 2);
+            labelAABM.Content = Math.Round(model.GetAverageAmountOfBooks(minAge, maxAge, sex), 2);
+            labelMABM.Content = Math.Round(model.GetMaxAmountOfBooks(minAge, maxAge, sex), 2);
         }
 
         private void radioButtonMale_Checked(object sender, RoutedEventArgs e)
@@ -121,8 +126,13 @@ namespace VKAnalysis
 
         private void radioButtonFemale_Checked(object sender, RoutedEventArgs e)
         {
-            sex = "Fenale";
+            sex = "Female";
             setAgeAndSex(MinAge, MaxAge, sex);
+        }
+
+        private void radioButtonAny_Checked(object sender, RoutedEventArgs e)
+        {
+            setAge(MinAge, MaxAge);
         }
     }
 }
